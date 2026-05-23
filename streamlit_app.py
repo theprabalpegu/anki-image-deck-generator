@@ -91,15 +91,6 @@ def generate_image_prompt_styled(meaning: str, style: str) -> str:
 
 st.set_page_config(page_title="Anki Image Deck Generator")
 
-st.markdown(
-    """<style>
-    .stApp {
-        background: linear-gradient(180deg, #1a3a6e 0%, #0d1b2a 100%);
-    }
-    </style>""",
-    unsafe_allow_html=True,
-)
-
 st.title("Anki Image Deck Generator")
 st.markdown(
     "**Upload your vocabulary list, get an Anki deck with AI-generated images**"
