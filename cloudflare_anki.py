@@ -43,7 +43,7 @@ CF_API_BASE = "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run
 def require_env(name: str) -> str:
     value = os.getenv(name)
     if not value:
-        print(f"ERROR: {name} is not set. Add it to your .env file.")
+        print(f"ERROR: {name} is not set. Add it to your .env file or Streamlit secrets.")
         sys.exit(1)
     return value
 
