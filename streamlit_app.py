@@ -1,4 +1,5 @@
 import io
+import os
 import shutil
 import tempfile
 from pathlib import Path
@@ -7,6 +8,12 @@ import genanki
 import pandas as pd
 import requests
 import streamlit as st
+
+try:
+    os.environ["CLOUDFLARE_ACCOUNT_ID"] = st.secrets["CLOUDFLARE_ACCOUNT_ID"]
+    os.environ["CLOUDFLARE_API_TOKEN"] = st.secrets["CLOUDFLARE_API_TOKEN"]
+except (KeyError, FileNotFoundError):
+    pass
 
 try:
     from cloudflare_anki import (
@@ -21,7 +28,7 @@ try:
 except SystemExit:
     st.error(
         "Cloudflare credentials not found. "
-        "Add CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN to your .env file."
+        "Add them to Streamlit secrets (for Cloud) or a .env file (for local)."
     )
     st.stop()
 
